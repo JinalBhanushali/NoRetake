@@ -3,9 +3,12 @@ import { motion } from "framer-motion";
 import { useNavigate,Link } from "react-router-dom";
 
 const FormA = () => {
+
+  
   const navigate = useNavigate();
 
   return (
+
     <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-300 p-6 flex items-center justify-center relative">
       
       {/* 🎈 Back Button */}
