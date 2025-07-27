@@ -4,7 +4,6 @@ import { useNavigate,Link } from "react-router-dom";
 
 const FormA = () => {
 
-  
   const navigate = useNavigate();
 
   return (
