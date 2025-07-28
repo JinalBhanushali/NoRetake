@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/JinalBhanushali/NoRetake/static/css/main.530b7089.css",
-    "main.js": "/JinalBhanushali/NoRetake/static/js/main.b829aab0.js",
-    "static/js/453.7cbdac5a.chunk.js": "/JinalBhanushali/NoRetake/static/js/453.7cbdac5a.chunk.js",
-    "index.html": "/JinalBhanushali/NoRetake/index.html",
-    "main.530b7089.css.map": "/JinalBhanushali/NoRetake/static/css/main.530b7089.css.map",
-    "main.b829aab0.js.map": "/JinalBhanushali/NoRetake/static/js/main.b829aab0.js.map",
-    "453.7cbdac5a.chunk.js.map": "/JinalBhanushali/NoRetake/static/js/453.7cbdac5a.chunk.js.map"
+    "main.css": "/NoRetake/static/css/main.530b7089.css",
+    "main.js": "/NoRetake/static/js/main.3f3ee307.js",
+    "static/js/453.7cbdac5a.chunk.js": "/NoRetake/static/js/453.7cbdac5a.chunk.js",
+    "index.html": "/NoRetake/index.html",
+    "main.530b7089.css.map": "/NoRetake/static/css/main.530b7089.css.map",
+    "main.3f3ee307.js.map": "/NoRetake/static/js/main.3f3ee307.js.map",
+    "453.7cbdac5a.chunk.js.map": "/NoRetake/static/js/453.7cbdac5a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.530b7089.css",
-    "static/js/main.b829aab0.js"
+    "static/js/main.3f3ee307.js"
   ]
 }
