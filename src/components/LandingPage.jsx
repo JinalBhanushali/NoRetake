@@ -1,64 +1,4 @@
-// import React from "react";
-// import { motion } from "framer-motion";
 
-// const LandingPage = () => {
-//   return (
-//     // <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-600 to-blue-500 p-6">
-//     // <div className="min-h-screen bg-blue-50 flex items-center justify-center">
-// /* <div className="min-h-screen bg-white flex items-center justify-center border-t border-gray-200"> */
-// /* <div className="min-h-screen bg-yellow-50 flex items-center justify-center"> */
-
-//     <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-300 p-6 flex items-center justify-center relative overflow-hidden">
-//       {/* 🎈 Animated Balloons */}
-//       {["top-10 left-10", "top-20 right-10", "bottom-10 left-20", "bottom-20 right-20"].map((pos, i) => (
-//         <motion.div
-//           key={i}
-//           initial={{ y: 100 }}
-//           animate={{ y: -100 }}
-//           transition={{
-//             repeat: Infinity,
-//             duration: 6 + i,
-//             ease: "easeInOut",
-//           }}
-//           className={`absolute w-6 h-8 rounded-full bg-pink-300 opacity-70 ${pos}`}
-//         ></motion.div>
-//       ))}
-
-//       <motion.div
-//         initial={{ opacity: 0, y: 50 }}
-//         animate={{ opacity: 1, y: 0 }}
-//         transition={{ duration: 0.8 }}
-//         className="bg-white p-10 rounded-3xl shadow-2xl max-w-xl w-full text-center relative z-10"
-//       >
-//         <h1 className="text-4xl font-extrabold text-purple-700 mb-3 tracking-tight">
-//           🎉 FunFest 2025
-//         </h1>
-//         <p className="text-lg text-gray-600 mb-6">
-//           Celebrate creativity, colors, and connection with live shows, games & surprises!
-//         </p>
-
-//         <div className="flex justify-center gap-4">
-//           <motion.button
-//             whileHover={{ scale: 1.07 }}
-//             className="bg-purple-600 text-white px-6 py-3 rounded-xl font-semibold shadow-md hover:bg-purple-500 transition-all"
-//           >
-//             🎟️ Grab Tickets
-//           </motion.button>
-
-//           <motion.button
-//             whileHover={{ scale: 1.07 }}
-//             className="bg-gray-200 text-yellow-800 px-6 py-3 rounded-xl font-semibold shadow-md hover:bg-gray-50 transition"
-//           >
-//             📅 Activities
-//           </motion.button>
-//         </div>
-//       </motion.div>
-//     </div>
-
-//     )
-// };
-
-// export default LandingPage;
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
@@ -149,89 +89,74 @@ const generateBalloon = (index) => {
 
 
 const LandingPage = () => {
+const imagePath = process.env.REACT_APP_IMAGE_PATH;
+console.log(imagePath)
   return (
-<div
-  className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-200 p-6 flex items-center justify-center relative overflow-hidden"
-//   className="min-h-screen p-8 flex items-center justify-center relative overflow-hidden bg-cover bg-center"
-//   style={{ backgroundImage: "url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&q=80')" }}
->
-  {/* Overlay to darken background for readability */}
+<div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-200 p-6 flex items-center justify-center relative overflow-hidden">
+  {/* 🔮 Background Overlay */}
   <div className="absolute inset-0 bg-purple-100/60 backdrop-blur-sm z-0"></div>
 
-  {/* 🎈 Flying Balloons */}
+  {/* 🎈 Balloons */}
   {Array.from({ length: 12 }).map((_, i) => generateBalloon(i))}
 
-  {/* 📦 4 Creative Feature Boxes */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-x-16 sm:gap-y-14 z-10">
-  {/* Box 1 - Get Tickets */}
-  <Link to="/FormA">
-    <motion.div
+  {/* 📦 Content Wrapper */}
+  <div className="z-10 flex flex-col items-center">
+    {/* 📦 Feature Boxes Grid */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-x-16 sm:gap-y-14 mb-12">
+      {/* Box 1 - Tickets */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="relative w-80 h-60 rounded-3xl overflow-hidden shadow-2xl"
+        >
+          <img
+            src={`${imagePath}/wedding.jpeg`}
+            alt="Tickets"
+            className="w-full h-full object-content"
+          />
+        </motion.div>
+
+      {/* Box 2 - Events */}
+      <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.8 }}
-        className="bg-white bg-opacity-90 shadow-2xl rounded-3xl p-8 w-80 h-60 text-center flex flex-col items-center"
-    >
+        className="relative w-80 h-60 rounded-3xl overflow-hidden shadow-2xl"
+      >
         <img
-        src="https://cdn-icons-png.flaticon.com/512/5971/5971864.png"
-        alt="Tickets"
-        className="w-16 h-16 mb-4"
+          src= {`${imagePath}/noretakes.jpeg`}
+          alt="Events"
+          className="w-full h-full object-content"
         />
-        <h2 className="text-2xl font-bold text-purple-700 mb-2">🎟️ Get Tickets</h2>
-        <p className="text-base text-gray-600">Secure your spot and join the fun!</p>
+      </motion.div>
+    </div>
+
+    {/* 🚀 Start Button (Below Boxes) */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+    >
+      <Link to="/Options">
+        <motion.button
+          whileHover={{
+            scale: 1.1,
+            boxShadow: "0 0 20px rgba(168, 85, 247, 0.8)",
+            rotate: [0, 2, -2, 2, 0],
+          }}
+          transition={{ duration: 0.4 }}
+          className="relative px-10 py-4 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white font-extrabold text-lg tracking-wider shadow-xl overflow-hidden"
+        >
+          <span className="absolute inset-0 bg-white opacity-10 blur-md animate-pulse" />
+          <span className="relative z-10 flex items-center gap-2">
+            🚀 Let's Start
+          </span>
+        </motion.button>
+      </Link>
     </motion.div>
-  </Link>
-  {/* Box 2 - Explore Events */}
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.5, duration: 0.8 }}
-    className="bg-white bg-opacity-90 shadow-2xl rounded-3xl p-8 w-80 h-60 text-center flex flex-col items-center"
-  >
-    <img
-      src="https://cdn-icons-png.flaticon.com/512/869/869869.png"
-      alt="Events"
-      className="w-16 h-16 mb-4"
-    />
-    <h2 className="text-2xl font-bold text-pink-600 mb-2">📅 Explore Events</h2>
-    <p className="text-base text-gray-600">Discover exciting activities and games.</p>
-  </motion.div>
-
-  {/* Box 3 - Guest Speakers */}
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.7, duration: 0.8 }}
-    className="bg-white bg-opacity-90 shadow-2xl rounded-3xl p-8 w-80 h-60 text-center flex flex-col items-center"
-  >
-    <img
-      src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png"
-      alt="Speakers"
-      className="w-16 h-16 mb-4"
-    />
-    <h2 className="text-2xl font-bold text-blue-600 mb-2">🎤 Guest Speakers</h2>
-    <p className="text-base text-gray-600">Meet inspiring personalities on stage.</p>
-  </motion.div>
-
-  {/* Box 4 - Game Zone */}
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.9, duration: 0.8 }}
-    className="bg-white bg-opacity-90 shadow-2xl rounded-3xl p-8 w-80 h-60 text-center flex flex-col items-center"
-  >
-    <img
-      src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png"
-      alt="Games"
-      className="w-16 h-16 mb-4"
-    />
-    <h2 className="text-2xl font-bold text-green-600 mb-2">🎮 Game Zone</h2>
-    <p className="text-base text-gray-600">Play & compete in fun games and challenges.</p>
-  </motion.div>
+  </div>
 </div>
-
-</div>
-
-
 
 
   );

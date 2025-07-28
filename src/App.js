@@ -5,12 +5,14 @@ import LandingPage from './components/LandingPage';
 import FormA from './components/FormA';
 import FormB  from './components/FormB';
 import UserForm from './components/UserForm'
+import OptionPage from './components/OptionPage';
 
 function App() {
   return (
     //  <Router>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} /> 
+        <Route path="/Options" element={<OptionPage />} />
         <Route path="/FormA" element={<FormA />} />
         <Route path="/FormB" element={<FormB />} />
         <Route path="/UserForm" element={<UserForm />} />
