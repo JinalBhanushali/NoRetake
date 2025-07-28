@@ -8,14 +8,14 @@ import UserForm from './components/UserForm'
 
 function App() {
   return (
-     <Router>
+    //  <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/FormA" element={<FormA />} />
         <Route path="/FormB" element={<FormB />} />
         <Route path="/UserForm" element={<UserForm />} />
       </Routes>
-    </Router>
+    // </Router>
   );
 }
 
