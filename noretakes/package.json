@@ -16,8 +16,7 @@
     "web-vitals": "^2.1.4",
     "xlsx": "^0.18.5"
   },
-  
-  "homepage": "https://jinalbhanushali.github.io/NoRetake",
+  "homepage": "https://github.com/JinalBhanushali/NoRetake",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
