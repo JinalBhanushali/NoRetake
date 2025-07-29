@@ -114,10 +114,22 @@ const FormA = () => {
       >
         ⬅️ Back
       </motion.button>
+      
 
-      <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="bg-white p-8 rounded-2xl shadow-2xl max-w-2xl w-full text-center">
+      <div className="flex flex-col items-center gap-6">
+  {/* Heading Above Quiz Box */}
+  
+  <h2 className="text-3xl sm:text-4xl font-extrabold text-purple-700 text-center drop-shadow-md tracking-wide animate-fade-in mb-6">
+  ✨ Select one option from each — Let’s see your vibe! 🎭
+</h2>
+
+
+  {/* Quiz Box */}
+   <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="bg-white p-8 rounded-2xl shadow-2xl max-w-2xl w-full text-center">
+       
         {!result ? (
           <>
+          
             <h1 className="text-3xl font-bold text-gray-800 mb-4">{questions[currentQuestion].question}</h1>
             <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 mt-6">
               {questions[currentQuestion].options.map((option, index) => (
@@ -144,6 +156,8 @@ const FormA = () => {
           </div>
         )}
       </motion.div>
+</div>
+
 
       {showFormPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">

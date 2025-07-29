@@ -1,16 +1,127 @@
-import React from "react";
+import React, { useState, useEffect  } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import UserForm from "./UserForm";
+
+const questions = [
+  {
+    question: "Planning your event means...",
+    options: [
+      { label: "Googling 'party ideas' at 1 a.m.", points: 1 },
+      { label: "Texting a friend: 'What should I do?'", points: 0 },
+      { label: "Pinterest boards, Excel sheets, and vendor calls.", points: 3 },
+    ],
+  },
+  {
+    question: "How do you feel about handling 8 vendors in one day?",
+    options: [
+      { label: "Wait—eight vendors?", points: 0 },
+      { label: "Love the coordination challenge!", points: 3 },
+      { label: "I'll try, but I might cry.", points: 1 },
+    ],
+  },
+  // {
+  //   question: "What’s your plan if your decorator bails a day before the event?",
+  //   options: [
+  //     { label: "I’ll ask Instagram for help.", points: 1 },
+  //     { label: "Cancel the event, obviously.", points: 0 },
+  //     { label: "I’ll have backups on speed dial.", points: 3 },
+  //   ],
+  // },
+  // {
+  //   question: "What’s your event budgeting style?",
+  //   options: [
+  //     { label: "I think I have a rough idea.", points: 1 },
+  //     { label: "We’ll just figure it out later.", points: 0 },
+  //     { label: "Every rupee accounted for in a spreadsheet.", points: 3 },
+  //   ],
+  // },
+  // {
+  //   question: "How early do you lock down your venue?",
+  //   options: [
+  //     { label: "3–6 months before.", points: 3 },
+  //     { label: "Wait, we need a venue?", points: 0 },
+  //     { label: "When I remember.", points: 1 },
+  //   ],
+  // },
+  // {
+  //   question: "How do you usually invite people?",
+  //   options: [
+  //     { label: "I'll just call whoever I remember.", points: 0 },
+  //     { label: "Custom invites with RSVP tracking.", points: 3 },
+  //     { label: "WhatsApp forwards and maybe a Google form.", points: 1 },
+  //   ],
+  // },
+  // {
+  //   question: "On event day, your role is…",
+  //   options: [
+  //     { label: "Behind the scenes, making it all run like magic.", points: 3 },
+  //     { label: "Screaming, crying, and asking for wine.", points: 0 },
+  //     { label: "Serving food, guiding guests, and sweating through it all.", points: 1 },
+  //   ],
+  // },
+  // {
+  //   question: "You love events that are…",
+  //   options: [
+  //     { label: "Seamless and stylish.", points: 3 },
+  //     { label: "Fun but chaotic.", points: 1 },
+  //     { label: "Over as soon as possible.", points: 0 },
+  //   ],
+  // },
+];
 
 const FormD = () => {
-    const navigate= new useNavigate()
+  const navigate = useNavigate();
+  const [current, setCurrent] = useState(0);
+  const [answers, setAnswers] = useState(Array(questions.length).fill(null));
+  const [score, setScore] = useState(null);
+  const [result, setResult] = useState("");
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+
+  const handleAnswer = (points) => {
+    const updated = [...answers];
+    updated[current] = points;
+    setAnswers(updated);
+  };
+
+  const handleNext = () => {
+    if (current < questions.length - 1) {
+      setCurrent(current + 1);
+    } else {
+      calculateScore();
+      setShowForm(true);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (current > 0) setCurrent(current - 1);
+  };
+
+  const calculateScore = () => {
+    const total = answers.reduce((a, b) => a + (b || 0), 0);
+    setScore(total);
+  };
+
+  useEffect(() => {
+    if (score !== null) {
+      if (score >= 20) {
+        setResult("🧠 The Closet Planner");
+      } else if (score >= 10) {
+        setResult("🤹 The Struggler");
+      } else {
+        setResult("🧨 The Chaos Magnet");
+      }
+    }
+  }, [score]);
+
+  const handleFormSubmit = () => {
+    setFormSubmitted(true);
+    setShowForm(false);
+  };
+
   return (
-    // <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-600 to-blue-500 p-6">
-    // <div className="min-h-screen bg-blue-50 flex items-center justify-center">
-/* <div className="min-h-screen bg-white flex items-center justify-center border-t border-gray-200"> */
-/* <div className="min-h-screen bg-yellow-50 flex items-center justify-center"> */
-<div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-300 p-6 flex items-center justify-center">
-{/* 🏠 Home Button - Top Right */}
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-200 flex flex-col items-center justify-center p-4 relative">
       <motion.button
         whileHover={{ scale: 1.05, rotate: 2 }}
         onClick={() => navigate("/")}
@@ -19,7 +130,6 @@ const FormD = () => {
         🏠 Home
       </motion.button>
 
-      {/* ⬅️ Back Button - Top Left */}
       <motion.button
         whileHover={{ scale: 1.05, rotate: -2 }}
         onClick={() => navigate(-1)}
@@ -27,37 +137,99 @@ const FormD = () => {
       >
         ⬅️ Back
       </motion.button>
-       <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9 }}
-        className="bg-white p-10 rounded-3xl shadow-xl max-w-xl w-full text-center border border-blue-100"
-      >
-        <h2 className="text-3xl font-extrabold text-blue-700 mb-3">
-          🚀 Startup Sprint 2025
+
+      {/* Header outside box */}
+      <div className="mb-6">
+ <h2 className="text-3xl font-bold text-center text-purple-700 mb-5">
+          🧪 Take this 2-minute reality check before you DIY your big day!
         </h2>
-        <p className="text-md text-gray-600 mb-8">
-          Network with innovators, pitch your ideas, and unlock growth in 48 hours!
+       <p className="text-xl text-gray-600 text-center mb-4">
+          ✅ Pick the option that sounds most like you. Tally your points at the end!
         </p>
+      </div>
+      
 
-        <div className="flex justify-center gap-4">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            className="px-6 py-3 rounded-full text-white bg-blue-600 hover:bg-blue-700 font-semibold shadow-lg"
-          >
-            🔥 Join the Sprint
-          </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            className="px-6 py-3 rounded-full border border-blue-400 text-blue-600 font-semibold hover:bg-blue-100 shadow-sm"
-          >
-            📄 Event Guide
-          </motion.button>
+      <div className="flex flex-col items-center gap-6 max-w-xl w-full">
+        <div className="bg-white p-8 rounded-2xl shadow-2xl w-full">
+          {score === null ? (
+            <div>
+              <h2 className="text-xl font-semibold text-purple-700 text-center mb-4">
+                {questions[current].question}
+              </h2>
+              <div className="flex flex-col gap-3 mb-6">
+                {questions[current].options.map((opt, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleAnswer(opt.points)}
+                    className={`py-2 px-4 rounded shadow font-medium text-purple-800 ${
+                      answers[current] === opt.points
+                        ? "bg-purple-300"
+                        : "bg-purple-100 hover:bg-purple-200"
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+              <div className="flex justify-between">
+                <button
+                  onClick={handlePrevious}
+                  disabled={current === 0}
+                  className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded disabled:opacity-50"
+                >
+                  ⬅️ Previous
+                </button>
+                <button
+                  onClick={handleNext}
+                  disabled={answers[current] === null}
+                  className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded disabled:opacity-50"
+                >
+                  {current === questions.length - 1 ? "Finish" : "Next ➡️"}
+                </button>
+              </div>
+            </div>
+          ) : formSubmitted ? (
+            <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl text-center">
+              <h3 className="text-2xl font-bold mb-2 text-purple-700">Your Result: {score} points</h3>
+              <p className="text-xl mb-4">{result}</p>
+              <p className="text-gray-600">
+                {score >= 20 &&
+                  "You’ve got the brain of a planner—even if you don’t do it professionally. Hire someone to execute your vision perfectly!"}
+                {score >= 10 && score < 20 &&
+                  "You try your best, but the details wear you down. You need a planner so you can actually enjoy your own event."}
+                {score < 10 &&
+                  "You're the vibe—not the execution. Please, for everyone’s sake (including yours), hire a planner."}
+              </p>
+            </div>
+          ) : null}
         </div>
-      </motion.div>
+      </div>
+
+      {/* Modal for UserForm */}
+      {showForm && !formSubmitted && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md relative"
+          >
+            <button
+              onClick={() => setShowForm(false)}
+              className="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl font-bold"
+            >
+              ×
+            </button>
+            <h3 className="text-xl font-bold mb-4 text-purple-700 text-center">🎉 One Last Step</h3>
+            <UserForm onSubmit={handleFormSubmit} />
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default FormD;
+
+
+
