@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate,Link } from "react-router-dom";
-// import { db } from "../firebase";
-// import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase"; // correct relative path from /components
+import { collection, addDoc } from "firebase/firestore";
+import toast from 'react-hot-toast';
 const UserForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -33,8 +34,10 @@ const UserForm = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-     // await addDoc(collection(db, "users"), formData);
-      alert("Data saved!");
+      await addDoc(collection(db, "users"), formData);  
+      //alert("Data saved!");
+      toast.success("Thanks for the information!");
+      onClose()
     } catch (err) {
       console.error("Error saving data:", err);
     }
