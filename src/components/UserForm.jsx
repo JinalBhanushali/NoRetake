@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate,Link } from "react-router-dom";
+// import { db } from "../firebase";
+// import { collection, addDoc } from "firebase/firestore";
 const UserForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -13,19 +15,28 @@ const UserForm = ({ onClose }) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     // await fetch("https://script.google.com/macros/s/AKfycbyjm1b_Dpzv_04Cy9PTG_KtHLJhV7LVVumK9BIHPRnOGBVOMbQKN3RhIpzqjV_ufBko/exec", {
+  //     //   method: "POST",
+  //     //   body: JSON.stringify(formData),
+  //     //   headers: {
+  //     //     "Content-Type": "application/json",
+  //     //   },
+  //     // });
+  //     onClose();
+  //   } catch (error) {
+  //     console.error("Error submitting form:", error);
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // await fetch("https://script.google.com/macros/s/AKfycbyjm1b_Dpzv_04Cy9PTG_KtHLJhV7LVVumK9BIHPRnOGBVOMbQKN3RhIpzqjV_ufBko/exec", {
-      //   method: "POST",
-      //   body: JSON.stringify(formData),
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // });
-      onClose();
-    } catch (error) {
-      console.error("Error submitting form:", error);
+     // await addDoc(collection(db, "users"), formData);
+      alert("Data saved!");
+    } catch (err) {
+      console.error("Error saving data:", err);
     }
   };
 
