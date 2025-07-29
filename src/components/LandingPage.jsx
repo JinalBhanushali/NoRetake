@@ -141,7 +141,7 @@ const LandingPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
         >
-          <Link to="/Options">
+          <Link to="/options">
             <motion.button
               whileHover={{
                 scale: 1.1,

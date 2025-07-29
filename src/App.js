@@ -4,6 +4,9 @@ import './App.css';
 import LandingPage from './components/LandingPage';
 import FormA from './components/FormA';
 import FormB  from './components/FormB';
+import FormC  from './components/FormC';
+import FormD  from './components/FormD';
+import FormE  from './components/FormE';
 import UserForm from './components/UserForm'
 import OptionPage from './components/OptionPage';
 
@@ -12,9 +15,12 @@ function App() {
     //  <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} /> 
-        <Route path="/Options" element={<OptionPage />} />
-        <Route path="/FormA" element={<FormA />} />
-        <Route path="/FormB" element={<FormB />} />
+        <Route path="/options" element={<OptionPage />} />
+        <Route path="/personality" element={<FormA />} />
+        <Route path="/event" element={<FormB />} />
+        <Route path="/guide" element={<FormC />} />
+        <Route path="/gopro" element={<FormD />} />
+        <Route path="/contact" element={<FormE />} />
         <Route path="/UserForm" element={<UserForm />} />
       </Routes>
     // </Router>

@@ -7,14 +7,14 @@ const options = [
     title: "🎉 Discover Your Party Personality",
     description: "Uncover your unique vibe and style.",
     icon: "https://cdn-icons-png.flaticon.com/512/3829/3829186.png",
-    link: "/FormA",
+    link: "/personality",
     color: "text-purple-700",
   },
   {
     title: "💥 Burst Event Planning Myths",
     description: "Debunk the most common event myths.",
     icon: "https://cdn-icons-png.flaticon.com/512/2345/2345337.png",
-    link: "/FormB",
+    link: "/event",
     color: "text-pink-600",
   },
   {
