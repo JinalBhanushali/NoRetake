@@ -1,4 +1,4 @@
-import React, { useState, useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import UserForm from "./UserForm";
@@ -87,14 +87,14 @@ const FormD = () => {
     const updated = [...answers];
     updated[current] = points;
     setAnswers(updated);
-    
+
   };
 
   const handleNext = () => {
     setScore(score + answers[current]);
     console.log(" score " + score + " ans" + answers)
     //calculateScore();
-    if (current < questions.length - 1) { 
+    if (current < questions.length - 1) {
       setCurrent(current + 1);
     } else {
       setShowForm(true);
@@ -105,7 +105,7 @@ const FormD = () => {
     //console.log(answers.reduce((a, b) => a + (b || 0), 0))
     setScore(score - answers[current - 1]);
     if (current > 0) setCurrent(current - 1);
-      //calculateScore();
+    //calculateScore();
   };
 
   // const calculateScore = () => {
@@ -125,12 +125,12 @@ const FormD = () => {
     }
   }, [score]);
   useEffect(() => {
-  const handleResize = () => {
-    setWindowDimension({ width: window.innerWidth, height: window.innerHeight });
-  };
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
+    const handleResize = () => {
+      setWindowDimension({ width: window.innerWidth, height: window.innerHeight });
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleFormSubmit = () => {
     setFormSubmitted(true);
@@ -138,7 +138,7 @@ const FormD = () => {
   };
   const formClose = () => {
     setScore(score - answers[current]);
-    setShowForm(false); 
+    setShowForm(false);
     setFormSubmitted(false);
   }
 
@@ -162,14 +162,14 @@ const FormD = () => {
 
       {/* Header outside box */}
       <div className="mb-6">
- <h2 className="text-3xl font-bold text-center text-purple-700 mb-5">
+        <h2 className="text-3xl font-bold text-center text-purple-700 mb-5">
           🧪 Take this 2-minute reality check before you DIY your big day!
         </h2>
-       <p className="text-xl text-gray-600 text-center mb-4">
+        <p className="text-xl text-gray-600 text-center mb-4">
           ✅ Pick the option that sounds most like you !
-        </p> 
+        </p>
       </div>
-      
+
 
       <div className="flex flex-col items-center gap-6 max-w-xl w-full">
         <div className="bg-white p-8 rounded-2xl shadow-2xl w-full">
@@ -183,11 +183,10 @@ const FormD = () => {
                   <button
                     key={idx}
                     onClick={() => handleAnswer(opt.points)}
-                    className={`py-2 px-4 rounded shadow font-medium text-purple-800 ${
-                      answers[current] === opt.points
+                    className={`py-2 px-4 rounded shadow font-medium text-purple-800 ${answers[current] === opt.points
                         ? "bg-purple-300"
                         : "bg-purple-100 hover:bg-purple-200"
-                    }`}
+                      }`}
                   >
                     {opt.label}
                   </button>
@@ -213,38 +212,38 @@ const FormD = () => {
           ) : formSubmitted ? (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
               <Confetti
-    width={windowDimension.width}
-    height={windowDimension.height}
-    numberOfPieces={300}
-    recycle={false}
-    gravity={0.3}
-  />
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md relative"
-          >
-            <button
-              onClick={() => navigate('/options')}
-              className="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl font-bold"
-            >
-              ×
-            </button>
-            <h3 className="text-2xl font-bold mb-2 text-purple-700">Your Result: </h3>
-              <p className="text-xl mb-4">{result}</p>
-              <p className="text-gray-600">
-                {score >= 20 &&
-                  "You’ve got the brain of a planner—even if you don’t do it professionally. Hire someone to execute your vision perfectly!"}
-                {score >= 10 && score < 20 &&
-                  "You try your best, but the details wear you down. You need a planner so you can actually enjoy your own event."}
-                {score < 10 &&
-                  "You're the vibe—not the execution. Please, for everyone’s sake (including yours), hire a planner."}
-              </p>
-             
-          </motion.div>
-        </div>
-            
+                width={windowDimension.width}
+                height={windowDimension.height}
+                numberOfPieces={300}
+                recycle={false}
+                gravity={0.3}
+              />
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md relative"
+              >
+                <button
+                  onClick={() => navigate('/options')}
+                  className="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl font-bold"
+                >
+                  ×
+                </button>
+                <h3 className="text-2xl font-bold mb-2 text-purple-700">Your Result: </h3>
+                <p className="text-xl mb-4">{result}</p>
+                <p className="text-gray-600">
+                  {score >= 20 &&
+                    "You’ve got the brain of a planner—even if you don’t do it professionally. Hire someone to execute your vision perfectly!"}
+                  {score >= 10 && score < 20 &&
+                    "You try your best, but the details wear you down. You need a planner so you can actually enjoy your own event."}
+                  {score < 10 &&
+                    "You're the vibe—not the execution. Please, for everyone’s sake (including yours), hire a planner."}
+                </p>
+
+              </motion.div>
+            </div>
+
           ) : null}
         </div>
       </div>
@@ -255,7 +254,7 @@ const FormD = () => {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.5 }}
             className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md relative"
           >
             <button

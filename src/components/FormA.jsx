@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import UserForm from "./UserForm";
+import Confetti from "react-confetti";
 
 const questions = [
   {
@@ -75,7 +76,15 @@ const FormA = () => {
   const [answers, setAnswers] = useState({});
   const [result, setResult] = useState(null);
   const [showFormPopup, setShowFormPopup] = useState(false);
+  const [windowDimension, setWindowDimension] = useState({ width: window.innerWidth, height: window.innerHeight });
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowDimension({ width: window.innerWidth, height: window.innerHeight });
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const handleAnswer = (value) => {
     setAnswers({ ...answers, [currentQuestion]: value });
   };
@@ -96,7 +105,7 @@ const FormA = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-300 p-6 flex items-center justify-center relative">
-  
+
       {/* 🏠 Home Button - Top Right */}
       <motion.button
         whileHover={{ scale: 1.05, rotate: 2 }}
@@ -114,49 +123,73 @@ const FormA = () => {
       >
         ⬅️ Back
       </motion.button>
-      
+
 
       <div className="flex flex-col items-center gap-6">
-  {/* Heading Above Quiz Box */}
-  
-  <h2 className="text-3xl sm:text-4xl font-extrabold text-purple-700 text-center drop-shadow-md tracking-wide animate-fade-in mb-6">
-  ✨ Select one option from each — Let’s see your vibe! 🎭
-</h2>
+        {/* Heading Above Quiz Box */}
+
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-purple-700 text-center drop-shadow-md tracking-wide animate-fade-in mb-6">
+          ✨ Select one option from each — Let’s see your vibe! 🎭
+        </h2>
 
 
-  {/* Quiz Box */}
-   <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="bg-white p-8 rounded-2xl shadow-2xl max-w-2xl w-full text-center">
-       
-        {!result ? (
-          <>
-          
-            <h1 className="text-3xl font-bold text-gray-800 mb-4">{questions[currentQuestion].question}</h1>
-            <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 mt-6">
-              {questions[currentQuestion].options.map((option, index) => (
-                <motion.button key={index} whileHover={{ scale: 1.08 }} className={`w-56 h-28 bg-white rounded-xl shadow-lg text-lg font-semibold text-gray-700 transition-all duration-200 flex items-center justify-center text-center p-3 mx-4 ${answers[currentQuestion] === option.value ? "border-4 border-purple-400" : "hover:shadow-none"}`} onClick={() => handleAnswer(option.value)}>
-                  {option.label}
-                </motion.button>
-              ))}
+        {/* Quiz Box */}
+        <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="bg-white p-8 rounded-2xl shadow-2xl max-w-2xl w-full text-center">
+
+          {!result ? (
+            <>
+
+              <h1 className="text-3xl font-bold text-gray-800 mb-4">{questions[currentQuestion].question}</h1>
+              <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 mt-6">
+                {questions[currentQuestion].options.map((option, index) => (
+                  <motion.button key={index} whileHover={{ scale: 1.08 }} className={`w-56 h-28 bg-white rounded-xl shadow-lg text-lg font-semibold text-gray-700 transition-all duration-200 flex items-center justify-center text-center p-3 mx-4 ${answers[currentQuestion] === option.value ? "border-4 border-purple-400" : "hover:shadow-none"}`} onClick={() => handleAnswer(option.value)}>
+                    {option.label}
+                  </motion.button>
+                ))}
+              </div>
+
+              <div className="flex justify-between mt-8">
+                <button onClick={handlePrevious} disabled={currentQuestion === 0} className="bg-gray-300 px-6 py-2 rounded-lg font-medium hover:bg-gray-400 disabled:opacity-50">
+                  ⬅️ Previous
+                </button>
+                <button onClick={handleNext} disabled={!answers[currentQuestion]} className="bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 disabled:opacity-50">
+                  {currentQuestion === questions.length - 1 ? "Finish" : "Next ➡️"}
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+              <Confetti
+                width={windowDimension.width}
+                height={windowDimension.height}
+                numberOfPieces={300}
+                recycle={false}
+                gravity={0.5}
+              />
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md relative"
+              >
+                <button
+                  onClick={() => navigate('/options')}
+                  className="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl font-bold"
+                >
+                  ×
+                </button>
+                <div>
+                  <h2 className="text-3xl font-bold mb-4">🪪 Your Personality Type</h2>
+                  <p className="text-xl text-purple-700 font-semibold">{result}</p>
+                  <p className="mt-4 text-gray-600">{personalities[result]}</p>
+                </div>
+
+              </motion.div>
             </div>
 
-            <div className="flex justify-between mt-8">
-              <button onClick={handlePrevious} disabled={currentQuestion === 0} className="bg-gray-300 px-6 py-2 rounded-lg font-medium hover:bg-gray-400 disabled:opacity-50">
-                ⬅️ Previous
-              </button>
-              <button onClick={handleNext} disabled={!answers[currentQuestion]} className="bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 disabled:opacity-50">
-                {currentQuestion === questions.length - 1 ? "Finish" : "Next ➡️"}
-              </button>
-            </div>
-          </>
-        ) : (
-          <div>
-            <h2 className="text-3xl font-bold mb-4">🪪 Your Personality Type</h2>
-            <p className="text-xl text-purple-700 font-semibold">{result}</p>
-            <p className="mt-4 text-gray-600">{personalities[result]}</p>
-          </div>
-        )}
-      </motion.div>
-</div>
+          )}
+        </motion.div>
+      </div>
 
 
       {showFormPopup && (
