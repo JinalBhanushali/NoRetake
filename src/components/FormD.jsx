@@ -2,6 +2,8 @@ import React, { useState, useEffect  } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import UserForm from "./UserForm";
+import Confetti from "react-confetti";
+
 
 const questions = [
   {
@@ -78,6 +80,8 @@ const FormD = () => {
   const [result, setResult] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [windowDimension, setWindowDimension] = useState({ width: window.innerWidth, height: window.innerHeight });
+
 
   const handleAnswer = (points) => {
     const updated = [...answers];
@@ -120,6 +124,13 @@ const FormD = () => {
       }
     }
   }, [score]);
+  useEffect(() => {
+  const handleResize = () => {
+    setWindowDimension({ width: window.innerWidth, height: window.innerHeight });
+  };
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
   const handleFormSubmit = () => {
     setFormSubmitted(true);
@@ -201,6 +212,13 @@ const FormD = () => {
             </div>
           ) : formSubmitted ? (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+              <Confetti
+    width={windowDimension.width}
+    height={windowDimension.height}
+    numberOfPieces={300}
+    recycle={false}
+    gravity={0.3}
+  />
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
