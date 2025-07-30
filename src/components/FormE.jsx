@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -6,6 +6,22 @@ const FormE = () => {
   const navigate = new useNavigate()
 
   const imagePath = process.env.REACT_APP_IMAGE_PATH || "/images";
+  
+  const pdfPath = process.env.REACT_APP_PDF_PATH || "/pdf";
+   const [isOpen, setIsOpen] = useState(false);
+const [isPdfOpen, setIsPdfOpen] = useState(false);
+ 
+  const handleOpenPdf = () => {
+    setIsOpen(true);
+  };
+   const handleOpenWeddingPdf = () => {
+    setIsPdfOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setIsPdfOpen(false);
+  };
   return (
     // <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-600 to-blue-500 p-6">
     // <div className="min-h-screen bg-blue-50 flex items-center justify-center">
@@ -49,7 +65,7 @@ const FormE = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
             className="relative w-[400px] h-[220px] rounded-3xl overflow-hidden shadow-2xl"
-             onClick={() => window.open("https://drive.google.com/file/d/182SSiQyZ3frkfENyEVbySJAtsjoOCSNr/view", "_blank", "noopener,noreferrer")}
+            onClick={handleOpenWeddingPdf}
           >
             <img
               src={`${imagePath}/wedding.jpeg`}
@@ -64,14 +80,69 @@ const FormE = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
             className="relative w-[400px] h-[220px] rounded-3xl overflow-hidden shadow-2xl"
-           onClick={() => window.open("https://drive.google.com/file/d/1Wdb2IAeTJ1HMFvO0zTSyyU-A-39kn-Z3/view", "_blank", "noopener,noreferrer")}
-          >
+            onClick={handleOpenPdf}
+           >
             <img
               src={`${imagePath}/noretakes.jpeg`}
               alt="NoRetakes"
               className="w-full h-full object-container"
             />
           </motion.button>
+          {/* Modal Dialog */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white rounded-xl p-6 w-[100vw] max-w-5xl h-[90vh] relative shadow-lg"
+          >
+            {/* Close Button */}
+            <button
+              onClick={handleClose}
+              className="absolute top-0 right-2 text-2xl text-gray-500 hover:text-red-600"
+            >
+              &times;
+            </button>
+
+            {/* PDF Viewer */}
+            <iframe
+             src={`${pdfPath}/NoRetakes_Credentials.pdf`}
+              title="PDF Viewer"
+              className="w-full h-full border-0 rounded"
+              allow="autoplay"
+            />
+          </motion.div>
+        </div>
+      )}
+       {isPdfOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white rounded-xl p-6 w-[100vw] max-w-5xl h-[90vh] relative shadow-lg"
+          >
+            {/* Close Button */}
+            <button
+              onClick={handleClose}
+              className="absolute top-0 right-2 text-2xl text-gray-500 hover:text-red-600"
+            >
+              &times;
+            </button>
+
+            {/* PDF Viewer */}
+            <iframe
+             src={`${pdfPath}/WeddingGenieCredentials.pdf`}
+              // src="https://drive.google.com/file/d/1Wdb2IAeTJ1HMFvO0zTSyyU-A-39kn-Z3/preview"
+              title="PDF Viewer"
+              className="w-full h-full border-0 rounded"
+              allow="autoplay"
+            />
+          </motion.div>
+        </div>
+      )}
+
           {/* <motion.button
             whileHover={{ scale: 1.05 }}
             className="px-6 py-3 rounded-full text-white bg-blue-600 hover:bg-blue-700 font-semibold shadow-lg"
