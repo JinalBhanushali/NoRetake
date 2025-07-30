@@ -1,6 +1,6 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { motion } from "framer-motion";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link ,useLocation} from "react-router-dom";
 
 const options = [
   {
@@ -42,8 +42,26 @@ const options = [
 
 const OptionPage = () => {
   const navigate = useNavigate();
+useEffect(() => {
+    const clickSound = new Audio(`${process.env.REACT_APP_API_URL}/sounds/click.mp3`);
 
+    const handleClick = (e) => {
+      const tag = e.target.tagName.toLowerCase();
+      if (tag === "button" || e.target.closest("button")) {
+        // Play from start every time
+        clickSound.currentTime = 0;
+        clickSound.play().catch(() => {}); // avoid uncaught promise
+      }
+    };
+
+    document.addEventListener("click", handleClick);
+
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  }, []);
   const renderBox = (option, customStyle = "", isCenter = false) => (
+    
     <Link to={option.link}>
       <motion.div
         whileHover={{ scale: 1.08 }}
@@ -73,6 +91,13 @@ const OptionPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-200 p-6 flex flex-col items-center justify-center relative overflow-hidden">
       {/* Back Button */}
+       <motion.button
+              whileHover={{ scale: 1.05, rotate: 2 }}
+              onClick={() => navigate("/")}
+              className="absolute top-6 right-6 bg-white text-purple-600 border-2 border-purple-300 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-100 hover:border-purple-500 transition"
+            >
+              🏠 Home
+            </motion.button>
       <motion.button
         whileHover={{ scale: 1.05, rotate: -2 }}
         onClick={() => navigate(-1)}
@@ -87,21 +112,21 @@ const OptionPage = () => {
       </h1>
 
       {/* Top Row */}
-      <div className="flex justify-between w-full max-w-5xl">
+      <motion.button className="flex justify-between w-full max-w-5xl">
         {renderBox(options[0], "m-0")}
         {renderBox(options[1], "m-0")}
-      </div>
+      </motion.button>
 
       {/* Center Box */}
-      <div className="flex justify-center w-full">
+      <motion.button className="flex justify-center w-full">
         {renderBox(options[4], "m-0", true)}
-      </div>
+      </motion.button>
 
       {/* Bottom Row */}
-      <div className="flex justify-between w-full max-w-5xl">
+      <motion.button className="flex justify-between w-full max-w-5xl">
         {renderBox(options[2], "m-0")}
         {renderBox(options[3], "m-0")}
-      </div>
+      </motion.button>
     </div>
   );
 };

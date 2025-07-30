@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 
 const FormE = () => {
   const navigate = new useNavigate()
@@ -22,6 +22,24 @@ const [isPdfOpen, setIsPdfOpen] = useState(false);
     setIsOpen(false);
     setIsPdfOpen(false);
   };
+  useEffect(() => {
+      const clickSound = new Audio(`${process.env.REACT_APP_API_URL}/sounds/click.mp3`);
+  
+      const handleClick = (e) => {
+        const tag = e.target.tagName.toLowerCase();
+        if (tag === "button" || e.target.closest("button")) {
+          // Play from start every time
+          clickSound.currentTime = 0;
+          clickSound.play().catch(() => {}); // avoid uncaught promise
+        }
+      };
+  
+      document.addEventListener("click", handleClick);
+  
+      return () => {
+        document.removeEventListener("click", handleClick);
+      };
+    }, []);
   return (
     // <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-600 to-blue-500 p-6">
     // <div className="min-h-screen bg-blue-50 flex items-center justify-center">

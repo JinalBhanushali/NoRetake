@@ -87,6 +87,24 @@ const FormA = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+   useEffect(() => {
+      const clickSound = new Audio(`${process.env.REACT_APP_API_URL}/sounds/click.mp3`);
+  
+      const handleClick = (e) => {
+        const tag = e.target.tagName.toLowerCase();
+        if (tag === "button" || e.target.closest("button")) {
+          // Play from start every time
+          clickSound.currentTime = 0;
+          clickSound.play().catch(() => {}); // avoid uncaught promise
+        }
+      };
+  
+      document.addEventListener("click", handleClick);
+  
+      return () => {
+        document.removeEventListener("click", handleClick);
+      };
+    }, []);
 
   useEffect(() => {
     if (result) {

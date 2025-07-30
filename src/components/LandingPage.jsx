@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 
 const colors = [
   "bg-pink-400",
@@ -86,7 +86,24 @@ const generateBalloon = (index) => {
 
 const LandingPage = () => {
   const imagePath = process.env.REACT_APP_IMAGE_PATH || "/images";
+ useEffect(() => {
+    const clickSound = new Audio(`${process.env.REACT_APP_API_URL}/sounds/click.mp3`);
 
+    const handleClick = (e) => {
+      const tag = e.target.tagName.toLowerCase();
+      if (tag === "button" || e.target.closest("button")) {
+        // Play from start every time
+        clickSound.currentTime = 0;
+        clickSound.play().catch(() => {}); // avoid uncaught promise
+      }
+    };
+
+    document.addEventListener("click", handleClick);
+
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  }, []);
   return (
     <div className="min-h-screen pt-16 pb-12 px-6 bg-gradient-to-br from-purple-100 to-blue-200 flex items-center justify-center relative overflow-hidden">
       {/* 🎈 Balloons */}
