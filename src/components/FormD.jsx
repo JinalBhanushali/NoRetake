@@ -36,38 +36,38 @@ const questions = [
       { label: "Every rupee accounted for in a spreadsheet.", points: 3 },
     ],
   },
-  // {
-  //   question: "How early do you lock down your venue?",
-  //   options: [
-  //     { label: "3–6 months before.", points: 3 },
-  //     { label: "Wait, we need a venue?", points: 0 },
-  //     { label: "When I remember.", points: 1 },
-  //   ],
-  // },
-  // {
-  //   question: "How do you usually invite people?",
-  //   options: [
-  //     { label: "I'll just call whoever I remember.", points: 0 },
-  //     { label: "Custom invites with RSVP tracking.", points: 3 },
-  //     { label: "WhatsApp forwards and maybe a Google form.", points: 1 },
-  //   ],
-  // },
-  // {
-  //   question: "On event day, your role is…",
-  //   options: [
-  //     { label: "Behind the scenes, making it all run like magic.", points: 3 },
-  //     { label: "Screaming, crying, and asking for wine.", points: 0 },
-  //     { label: "Serving food, guiding guests, and sweating through it all.", points: 1 },
-  //   ],
-  // },
-  // {
-  //   question: "You love events that are…",
-  //   options: [
-  //     { label: "Seamless and stylish.", points: 3 },
-  //     { label: "Fun but chaotic.", points: 1 },
-  //     { label: "Over as soon as possible.", points: 0 },
-  //   ],
-  // },
+  {
+    question: "How early do you lock down your venue?",
+    options: [
+      { label: "3–6 months before.", points: 3 },
+      { label: "Wait, we need a venue?", points: 0 },
+      { label: "When I remember.", points: 1 },
+    ],
+  },
+  {
+    question: "How do you usually invite people?",
+    options: [
+      { label: "I'll just call whoever I remember.", points: 0 },
+      { label: "Custom invites with RSVP tracking.", points: 3 },
+      { label: "WhatsApp forwards and maybe a Google form.", points: 1 },
+    ],
+  },
+  {
+    question: "On event day, your role is…",
+    options: [
+      { label: "Behind the scenes, making it all run like magic.", points: 3 },
+      { label: "Screaming, crying, and asking for wine.", points: 0 },
+      { label: "Serving food, guiding guests, and sweating through it all.", points: 1 },
+    ],
+  },
+  {
+    question: "You love events that are…",
+    options: [
+      { label: "Seamless and stylish.", points: 3 },
+      { label: "Fun but chaotic.", points: 1 },
+      { label: "Over as soon as possible.", points: 0 },
+    ],
+  },
 ];
 
 const FormD = () => {
