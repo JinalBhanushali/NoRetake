@@ -90,7 +90,7 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen pt-16 pb-12 px-6 bg-gradient-to-br from-purple-100 to-blue-200 flex items-center justify-center relative overflow-hidden">
       {/* 🎈 Balloons */}
-      {Array.from({ length: 12 }).map((_, i) => generateBalloon(i))}
+      {Array.from({ length: 100 }).map((_, i) => generateBalloon(i))}
 
       {/* 💫 Blur Overlay */}
       <div className="absolute inset-0 bg-purple-100/60 backdrop-blur-sm z-0"></div>
@@ -110,7 +110,7 @@ const LandingPage = () => {
   initial={{ opacity: 0, y: 40 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 0.3, duration: 0.8 }}
-  className="relative w-[400px] h-[280px] rounded-3xl overflow-hidden shadow-2xl"
+  className="relative w-[500px] h-[280px] rounded-3xl overflow-hidden shadow-2xl"
 >
   <img
     src={`${imagePath}/wedding.jpeg`}
@@ -124,7 +124,7 @@ const LandingPage = () => {
   initial={{ opacity: 0, y: 40 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 0.3, duration: 0.8 }}
-  className="relative w-[400px] h-[280px] rounded-3xl overflow-hidden shadow-2xl"
+  className="relative w-[500px] h-[280px] rounded-3xl overflow-hidden shadow-2xl"
 >
   <img
     src={`${imagePath}/noretakes.jpeg`}
