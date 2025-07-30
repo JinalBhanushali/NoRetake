@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import UserForm from "./UserForm";
 import Confetti from "react-confetti";
+import confetti from "canvas-confetti"; // for cracker effect (if not already imported)
+
 
 const questions = [
   {
@@ -77,7 +79,7 @@ const FormA = () => {
   const [result, setResult] = useState(null);
   const [showFormPopup, setShowFormPopup] = useState(false);
   const [windowDimension, setWindowDimension] = useState({ width: window.innerWidth, height: window.innerHeight });
-
+  
   useEffect(() => {
     const handleResize = () => {
       setWindowDimension({ width: window.innerWidth, height: window.innerHeight });
@@ -85,6 +87,24 @@ const FormA = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    if (result) {
+      confetti({
+        particleCount: 150,
+        spread: 90,
+        origin: { y: 0.10 },
+      });
+
+      const audio = new Audio(`${process.env.REACT_APP_API_URL}/sounds/clap.mp3`);
+      //const audio = new Audio("/sounds/clap.mp3");
+      audio.play().catch((e) => {
+        console.error("Audio play failed:", e);
+      });
+    }
+  }, [result]);
+
+
   const handleAnswer = (value) => {
     setAnswers({ ...answers, [currentQuestion]: value });
   };
@@ -170,11 +190,11 @@ const FormA = () => {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md relative"
+                className="bg-white p-10 rounded-xl shadow-lg w-full max-w-md relative"
               >
                 <button
                   onClick={() => navigate('/options')}
-                  className="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl font-bold"
+                  className="absolute top-2 right-4 text-gray-500 hover:text-red-500 text-xl font-bold"
                 >
                   ×
                 </button>
