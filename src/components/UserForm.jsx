@@ -37,9 +37,10 @@ const UserForm = ({ onClose }) => {
       await addDoc(collection(db, "users"), formData);  
       //alert("Data saved!");
       toast.success("Thanks for the information!");
-      onClose()
     } catch (err) {
       console.error("Error saving data:", err);
+    } finally {
+      onClose()
     }
   };
 
