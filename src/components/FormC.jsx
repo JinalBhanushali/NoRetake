@@ -9,33 +9,33 @@ const FormC = () => {
     {
       title: "🎉 Birthdays",
       details: [
-        "Pick 1 vibe (dino disco, fairy forest, mini chef)",
-        "Puppet shows, craft corners, bubble races",
-        "Fruit cups, mini sliders, smoothie shots",
+        ["Theme? Go All-In!","Pick 1 vibe (dino disco, fairy forest, mini chef)"],
+        ["Keep It Playful!","Puppet shows, craft corners, bubble races"],
+        ["Snacks, But Make It Cute:","Fruit cups, mini sliders, smoothie shots"],
       ],
     },
     {
       title: "👶 Baby Shower",
       details: [
-        "Terracotta, sage, warm lighting (no pastels)",
-        "Polaroid wall, “Dear Baby” notes, cute games",
-        "Lo-fi tunes, soft chats, candle-lit calm",
+        ["Mood: Cozy & Classy","Terracotta, sage, warm lighting (no pastels)"],
+        ["Make Memories:","Keep It Playful!","Polaroid wall, “Dear Baby” notes, cute games"],
+        ["Chill Vibes Only:","Snacks, But Make It Cute:","Lo-fi tunes, soft chats, candle-lit calm"],
       ],
     },
     {
       title: "💑 Anniversary",
       details: [
-        "Mini video, photo lane, or audio QR codes",
-        "Couple entry: slow dance or scooter ride",
-        "Warm lights, music, and scent diffusers",
+        ["Skip the Stage, Tell a Story:","Mini video, photo lane, or audio QR codes"],
+        ["Custom Couple Entry:","Couple entry: slow dance or scooter ride"],
+        ["Romantic Feels:","Warm lights, music, and scent diffusers"],
       ],
     },
     {
       title: "💍 Wedding",
       details: [
-        "Rust, olive, ivory — no glitter, just glow",
-        "QR invites, guest groups, moodboard polls",
-        "Chai bars, foot spas, live sketch artists",
+        ["Aesthetic = Elevated Earthy","Rust, olive, ivory — no glitter, just glow"],
+        ["Tech it Up:","QR invites, guest groups, moodboard polls"],
+        ["Guest Love Zones:","Chai bars, foot spas, live sketch artists"],
       ],
     },
   ];
@@ -147,7 +147,7 @@ const FormC = () => {
                   key={i}
                   className="p-3 bg-purple-50 rounded-lg shadow-sm border border-purple-100"
                 >
-                  {item}
+                  {item[0]} <br></br>{item[1]}
                 </div>
               ))}
             </div>
