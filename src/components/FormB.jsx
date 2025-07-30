@@ -13,13 +13,20 @@ const colors = [
 
 const getTailwindColor = (className) => {
   switch (className) {
-    case "bg-pink-400": return "#f472b6";
-    case "bg-blue-400": return "#60a5fa";
-    case "bg-yellow-300": return "#fde68a";
-    case "bg-green-300": return "#86efac";
-    case "bg-red-400": return "#f87171";
-    case "bg-purple-400": return "#c084fc";
-    default: return "#999";
+    case "bg-pink-400":
+      return "#f472b6";
+    case "bg-blue-400":
+      return "#60a5fa";
+    case "bg-yellow-300":
+      return "#fde68a";
+    case "bg-green-300":
+      return "#86efac";
+    case "bg-red-400":
+      return "#f87171";
+    case "bg-purple-400":
+      return "#c084fc";
+    default:
+      return "#999";
   }
 };
 
@@ -36,12 +43,18 @@ const myths = [
   { myth: "Planners take over everything.", truth: "You decide. We execute. You enjoy." },
 ];
 
+// Pop sound
+//const popSound = new Audio("https://cdn.pixabay.com/download/audio/2023/05/13/audio_fea94c637d.mp3?filename=balloon-pop-100646.mp3");
+const popSound = new Audio(`${process.env.REACT_APP_API_URL}/sounds/balloonblast.mp3`);
 const FormB = () => {
   const navigate = useNavigate();
   const [poppedIndexes, setPoppedIndexes] = useState([]);
 
   const handleBalloonClick = (index) => {
     if (!poppedIndexes.includes(index)) {
+      console.log(popSound.src)
+      popSound.currentTime = 0;
+      popSound.play();
       setPoppedIndexes([...poppedIndexes, index]);
     }
   };
@@ -65,10 +78,8 @@ const FormB = () => {
       </motion.button>
 
       {/* Titles */}
-      <div className="">
-        <h2 className="text-2xl sm:text-3xl font-bold text-purple-700">
-          Bust the Myths! 🎈
-        </h2>
+      <div>
+        <h2 className="text-2xl sm:text-3xl font-bold text-purple-700">Bust the Myths! 🎈</h2>
         <h2 className="text-md sm:text-xl font-medium text-purple-800 mt-2">
           Click a balloon to know the truth!
         </h2>
