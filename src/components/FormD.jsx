@@ -271,11 +271,11 @@ const FormD = () => {
                 <p className="text-xl mb-4">{result}</p>
                 <p className="text-gray-600">
                   {score >= 20 &&
-                    "You’ve got the brain of a planner—even if you don’t do it professionally. Hire someone to execute your vision perfectly!"}
+                    "You’ve got the brain of a planner—even if you don’t do it professionally. But for your own event, don’t risk the stress. Hire someone to execute your vision perfectly!"}
                   {score >= 10 && score < 20 &&
-                    "You try your best, but the details wear you down. You need a planner so you can actually enjoy your own event."}
+                    "You try your best, but the details wear you down. You’ll either forget the cake or lose your cool. Trust us, you need a planner so you can actually enjoy your own event."}
                   {score < 10 &&
-                    "You're the vibe—not the execution. Please, for everyone’s sake (including yours), hire a planner."}
+                    "Planning? You shouldn’t even be holding the guest list. You’re the vibe—not the execution. Please, for everyone’s sake (including yours), hire a planner."}
                 </p>
 
               </motion.div>

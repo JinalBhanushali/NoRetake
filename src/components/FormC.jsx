@@ -9,33 +9,33 @@ const FormC = () => {
     {
       title: "🎉 Birthdays",
       details: [
-        ["Theme? Go All-In!","Pick 1 vibe (dino disco, fairy forest, mini chef)"],
-        ["Keep It Playful!","Puppet shows, craft corners, bubble races"],
-        ["Snacks, But Make It Cute:","Fruit cups, mini sliders, smoothie shots"],
+        ["Theme? Go All-In!","Pick 1 vibe (dino disco, fairy forest, mini chef) — match everything."],
+        ["Keep It Playful!","Puppet shows, craft corners, bubble races, freeze dance zones."],
+        ["Snacks, But Make It Cute:","Fruit cups, mini sliders, smoothie shots — fun & fuss-free!"],
       ],
     },
     {
       title: "👶 Baby Shower",
       details: [
-        ["Mood: Cozy & Classy","Terracotta, sage, warm lighting (no pastels)"],
-        ["Make Memories:","Keep It Playful!","Polaroid wall, “Dear Baby” notes, cute games"],
-        ["Chill Vibes Only:","Snacks, But Make It Cute:","Lo-fi tunes, soft chats, candle-lit calm"],
+        ["Mood: Cozy & Classy","Think terracotta, sage, warm lighting (no pastels)."],
+        ["Make Memories:","Polaroid wall, “Dear Baby” notes, cute games."],
+        ["Chill Vibes Only:","Lo-fi tunes, soft chats, and candle-lit calm."],
       ],
     },
     {
       title: "💑 Anniversary",
       details: [
-        ["Skip the Stage, Tell a Story:","Mini video, photo lane, or audio QR codes"],
-        ["Custom Couple Entry:","Couple entry: slow dance or scooter ride"],
-        ["Romantic Feels:","Warm lights, music, and scent diffusers"],
+        ["Skip the Stage, Tell a Story:","Mini video, photo lane, or audio QR codes."],
+        ["Custom Couple Entry:","Couple entry: slow dance or scooter ride, or flash mob with fam!"],
+        ["Romantic Feels:","Warm lights, soft music, and scent diffusers = magic."],
       ],
     },
     {
       title: "💍 Wedding",
       details: [
-        ["Aesthetic = Elevated Earthy","Rust, olive, ivory — no glitter, just glow"],
-        ["Tech it Up:","QR invites, guest groups, moodboard polls"],
-        ["Guest Love Zones:","Chai bars, foot spas, live sketch artists"],
+        ["Aesthetic = Elevated Earthy","Rust, olive, ivory + matte textures. — No glitter, just glow."],
+        ["Tech it Up:","QR invites, guest groups, moodboard polls."],
+        ["Guest Love Zones:","Chai bars, foot spas, postcard corners, live sketch artists."],
       ],
     },
   ];
