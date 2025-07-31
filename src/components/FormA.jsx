@@ -8,7 +8,7 @@ import confetti from "canvas-confetti"; // for cracker effect (if not already im
 
 const questions = [
   {
-    question: "1. Decor Style",
+    question: "Decor Style",
     options: [
       { label: "Florals 🌸", value: "Glamorous" },
       { label: "Balloon 🎈", value: "Filmy" },
@@ -17,7 +17,7 @@ const questions = [
     ],
   },
   {
-    question: "2. Cake Choice",
+    question: "Cake Choice",
     options: [
       { label: "Classic 🍰", value: "Minimalistic" },
       { label: "Designer 👑", value: "Glamorous" },
@@ -26,7 +26,7 @@ const questions = [
     ],
   },
   {
-    question: "3. Entertainment",
+    question: "Entertainment",
     options: [
       { label: "Games 🎯", value: "Experimental" },
       { label: "Live Music 🎤", value: "Glamorous" },
@@ -35,7 +35,7 @@ const questions = [
     ],
   },
   {
-    question: "4. Entry Style",
+    question: "Entry Style",
     options: [
       { label: "Flower Shower 🌼", value: "Minimalistic" },
       { label: "Spotlight ✨", value: "Glamorous" },
@@ -44,7 +44,7 @@ const questions = [
     ],
   },
   {
-    question: "5. Colour Palette",
+    question: "Colour Palette",
     options: [
       { label: "Pastels 🎨", value: "Glamorous" },
       { label: "Brights 🌈", value: "Filmy" },
@@ -53,7 +53,7 @@ const questions = [
     ],
   },
   {
-    question: "6. Venue Vibe",
+    question: "Venue Vibe",
     options: [
       { label: "Home 🏠", value: "Minimalistic" },
       { label: "Banquet 🏛", value: "Glamorous" },

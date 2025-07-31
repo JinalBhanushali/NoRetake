@@ -94,7 +94,6 @@ const FormD = () => {
 
   const handleNext = () => {
     setScore(score + answers[current]);
-    console.log(" score " + score + " ans" + answers)
     //calculateScore();
     if (current < questions.length - 1) {
       setCurrent(current + 1);
@@ -200,7 +199,7 @@ const FormD = () => {
       {/* Header outside box */}
       <div className="mb-6">
         <h2 className="text-3xl font-bold text-center text-purple-700 mb-5">
-          🧪 Take this 2-minute reality check before you DIY your big day!
+          🧪 Take this 2-minutes reality check before you DIY your big day!
         </h2>
         <p className="text-xl text-gray-600 text-center mb-4">
           ✅ Pick the option that sounds most like you !

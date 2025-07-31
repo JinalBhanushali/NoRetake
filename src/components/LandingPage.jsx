@@ -115,8 +115,8 @@ const LandingPage = () => {
       {/* 💎 Content */}
       <div className="z-10 flex flex-col items-center max-w-6xl w-full mx-auto">
         <div className="mb-10 text-center">
-  <h1 className="text-4xl sm:text-5xl font-extrabold text-purple-700 mb-2">🎉 The Big Bash 2025</h1>
-  <p className="text-lg sm:text-xl text-gray-600 font-medium">Celebrate Moments, Create Memories</p>
+  <h1 className="text-4xl sm:text-5xl font-extrabold text-purple-700 mb-2"> Engage Zone</h1>
+  <p className="text-lg sm:text-xl text-gray-600 font-medium">Play. Connect. Remember.</p>
 </div>
 
         {/* 🖼️ Grid Boxes */}
@@ -170,7 +170,7 @@ const LandingPage = () => {
             >
               <span className="absolute inset-0 bg-white opacity-10 blur-md animate-pulse" />
               <span className="relative z-10 flex items-center gap-2">
-                🚀 Let's Start
+                 Let's Start
               </span>
             </motion.button>
           </Link>

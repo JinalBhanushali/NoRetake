@@ -81,8 +81,8 @@ const FormC = () => {
       onClick={() => setActiveEvent(events[0])}
       className="w-80 h-52 rounded-3xl bg-gradient-to-br from-yellow-100 to-orange-200 shadow-lg hover:shadow-yellow-400 transition-all duration-300 cursor-pointer flex flex-col justify-center items-center text-center px-4"
     >
-      <h3 className="text-xl font-bold text-orange-700">{events[0]?.title}</h3>
-      <p className="text-sm text-gray-700 mt-2">{events[0]?.shortDesc || "Click to explore!"}</p>
+      <h3 className="text-3xl font-bold text-orange-700">{events[0]?.title}</h3>
+      <p className="text-m text-gray-700 mt-2">{events[0]?.shortDesc || "Click to explore!"}</p>
     </motion.button>
 
     <motion.button
@@ -90,8 +90,8 @@ const FormC = () => {
       onClick={() => setActiveEvent(events[1])}
       className="w-80 h-52 rounded-3xl bg-gradient-to-br from-pink-100 to-red-200 shadow-lg hover:shadow-pink-400 transition-all duration-300 cursor-pointer flex flex-col justify-center items-center text-center px-4"
     >
-      <h3 className="text-xl font-bold text-pink-700">{events[1]?.title}</h3>
-      <p className="text-sm text-gray-700 mt-2">{events[1]?.shortDesc || "Tap to discover!"}</p>
+      <h3 className="text-3xl font-bold text-pink-700">{events[1]?.title}</h3>
+      <p className="text-m text-gray-700 mt-2">{events[1]?.shortDesc || "Tap to discover!"}</p>
     </motion.button>
   </div>
 
@@ -103,8 +103,8 @@ const FormC = () => {
         onClick={() => setActiveEvent(events[4])}
         className="w-72 h-44 bg-gradient-to-br from-purple-600 to-indigo-500 text-white rounded-full shadow-xl hover:shadow-indigo-400 transition-all duration-300 flex flex-col items-center justify-center text-center px-4"
       >
-        <h3 className="text-xl font-semibold">{events[4].title}</h3>
-        <p className="text-sm mt-1 italic opacity-90">{events[4].shortDesc || "Connect with us!"}</p>
+        <h3 className="text-3xl font-semibold">{events[4].title}</h3>
+        <p className="text-m mt-1 italic opacity-90">{events[4].shortDesc || "Connect with us!"}</p>
       </motion.button>
     )}
   </div>
@@ -116,8 +116,8 @@ const FormC = () => {
       onClick={() => setActiveEvent(events[2])}
       className="w-80 h-52 rounded-3xl bg-gradient-to-br from-teal-100 to-green-200 shadow-lg hover:shadow-green-400 transition-all duration-300 cursor-pointer flex flex-col justify-center items-center text-center px-4"
     >
-      <h3 className="text-xl font-bold text-green-700">{events[2]?.title}</h3>
-      <p className="text-sm text-gray-700 mt-2">{events[2]?.shortDesc || "Explore more!"}</p>
+      <h3 className="text-3xl font-bold text-green-700">{events[2]?.title}</h3>
+      <p className="text-m text-gray-700 mt-2">{events[2]?.shortDesc || "Explore more!"}</p>
     </motion.button>
 
     <motion.button
@@ -125,8 +125,8 @@ const FormC = () => {
       onClick={() => setActiveEvent(events[3])}
       className="w-80 h-52 rounded-3xl bg-gradient-to-br from-blue-100 to-sky-200 shadow-lg hover:shadow-blue-400 transition-all duration-300 cursor-pointer flex flex-col justify-center items-center text-center px-4"
     >
-      <h3 className="text-xl font-bold text-blue-700">{events[3]?.title}</h3>
-      <p className="text-sm text-gray-700 mt-2">{events[3]?.shortDesc || "Click to explore!"}</p>
+      <h3 className="text-3xl font-bold text-blue-700">{events[3]?.title}</h3>
+      <p className="text-m text-gray-700 mt-2">{events[3]?.shortDesc || "Click to explore!"}</p>
     </motion.button>
   </div>
 </div>

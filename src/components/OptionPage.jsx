@@ -2,37 +2,38 @@ import React,{useEffect} from "react";
 import { motion } from "framer-motion";
 import { useNavigate, Link ,useLocation} from "react-router-dom";
 
+const imagePath = process.env.REACT_APP_IMAGE_PATH || "/images";
 const options = [
   {
-    title: "🎉 Discover Your Party Personality",
+    title: "Discover Your Party Personality",
     description: "Uncover your unique vibe and style.",
-    icon: "https://cdn-icons-png.flaticon.com/512/3829/3829186.png",
+    icon: `${imagePath}/fun1.jpeg`,
     link: "/personality",
     color: "text-purple-700",
   },
   {
-    title: "💥 Burst Event Planning Myths",
+    title: "Burst Event Planning Myths",
     description: "Debunk the most common event myths.",
-    icon: "https://cdn-icons-png.flaticon.com/512/2345/2345337.png",
+    icon: `${imagePath}/blast2.png`,
     link: "/event",
     color: "text-pink-600",
   },
   {
-    title: "📘 Go-To Guide for Effortless Events",
+    title: "Go-To Guide for Effortless Events",
     description: "Plan events like a pro with our quick guide.",
-    icon: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    icon: `${imagePath}/book3.png`,
     link: "/guide",
     color: "text-blue-600",
   },
   {
-    title: "🧑‍💼 Go Pro or Go Solo?",
+    title: "Go Pro or Go Solo?",
     description: "Decide if you need an event planner.",
-    icon: "https://cdn-icons-png.flaticon.com/512/2936/2936885.png",
+    icon: `${imagePath}/person4.jpeg`,
     link: "/gopro",
     color: "text-green-600",
   },
   {
-    title: "🤝 Connect With Us",
+    title: "Connect With Us",
     description: "Reach out for personalized event help and ideas!",
     icon: "https://static.thenounproject.com/png/handshake-icon-2059119-512.png",
     link: "/contact",

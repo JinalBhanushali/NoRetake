@@ -52,7 +52,6 @@ const FormB = () => {
 
   const handleBalloonClick = (index) => {
     if (!poppedIndexes.includes(index)) {
-      console.log(popSound.src)
       popSound.currentTime = 0;
       popSound.play();
       setPoppedIndexes([...poppedIndexes, index]);

@@ -55,5 +55,16 @@
     "gh-pages": "^6.3.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.1"
+  },
+  "description": "<<<<<<< HEAD\r # Getting Started with Create React App",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JinalBhanushali/NoRetake.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JinalBhanushali/NoRetake/issues"
   }
 }
