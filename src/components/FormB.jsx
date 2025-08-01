@@ -1,6 +1,6 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useNavigate,useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const colors = [
   "bg-pink-400",
@@ -43,9 +43,8 @@ const myths = [
   { myth: "Planners take over everything.", truth: "You decide. We execute. You enjoy." },
 ];
 
-// Pop sound
-//const popSound = new Audio("https://cdn.pixabay.com/download/audio/2023/05/13/audio_fea94c637d.mp3?filename=balloon-pop-100646.mp3");
 const popSound = new Audio(`${process.env.REACT_APP_API_URL}/sounds/balloonblast.mp3`);
+
 const FormB = () => {
   const navigate = useNavigate();
   const [poppedIndexes, setPoppedIndexes] = useState([]);
@@ -57,24 +56,21 @@ const FormB = () => {
       setPoppedIndexes([...poppedIndexes, index]);
     }
   };
-   useEffect(() => {
-      const clickSound = new Audio(`${process.env.REACT_APP_API_URL}/sounds/click.mp3`);
-  
-      const handleClick = (e) => {
-        const tag = e.target.tagName.toLowerCase();
-        if (tag === "button" || e.target.closest("button")) {
-          // Play from start every time
-          clickSound.currentTime = 0;
-          clickSound.play().catch(() => {}); // avoid uncaught promise
-        }
-      };
-  
-      document.addEventListener("click", handleClick);
-  
-      return () => {
-        document.removeEventListener("click", handleClick);
-      };
-    }, []);
+
+  useEffect(() => {
+    const clickSound = new Audio(`${process.env.REACT_APP_API_URL}/sounds/click.mp3`);
+    const handleClick = (e) => {
+      const tag = e.target.tagName.toLowerCase();
+      if (tag === "button" || e.target.closest("button")) {
+        clickSound.currentTime = 0;
+        clickSound.play().catch(() => { });
+      }
+    };
+    document.addEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-200 flex flex-col items-center justify-center text-center px-4 relative overflow-x-hidden">
@@ -160,7 +156,19 @@ const FormB = () => {
                       ✅ {myth.truth}
                     </motion.div>
                   )}
-                  <div className="w-0.5 h-12 bg-gray-500 mt-1 opacity-100"></div>
+                  {/* Curved Stick */}
+                  <svg width="12" height="80" viewBox="0 0 12 80" className="mt-1" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M6 0 
+                        C 12 10, 0 20, 6 30 
+                        C 12 40, 0 50, 6 60 
+                        C 12 70, 0 80, 6 90"
+                      stroke="#6B7280"
+                      strokeWidth="1.5"
+                      fill="none"
+                    />
+                  </svg>
+
                 </motion.div>
               );
             })}
