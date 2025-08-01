@@ -105,9 +105,9 @@ const LandingPage = () => {
     };
   }, []);
   return (
-    <div className="min-h-screen pt-16 pb-12 px-6 bg-gradient-to-br from-purple-100 to-blue-200 flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#e5d8f3] via-[#bcdff9] to-[#aee6f9] pt-16 pb-12 px-6 flex items-center justify-center relative overflow-hidden">
       {/* 🎈 Balloons */}
-      {Array.from({ length: 100 }).map((_, i) => generateBalloon(i))}
+      {Array.from({ length: 80 }).map((_, i) => generateBalloon(i))}
 
       {/* 💫 Blur Overlay */}
       <div className="absolute inset-0 bg-purple-100/60 backdrop-blur-sm z-0"></div>
@@ -115,7 +115,7 @@ const LandingPage = () => {
       {/* 💎 Content */}
       <div className="z-10 flex flex-col items-center max-w-6xl w-full mx-auto">
         <div className="mb-10 text-center">
-  <h1 style={{ fontFamily: 'Merienda, cursive' }} className="text-4xl sm:text-5xl font-extrabold text-purple-700 mb-4"> Engage Zone</h1>
+  <h1 className="text-4xl sm:text-5xl font-extrabold text-purple-700 mb-4"> Engage Zone</h1>
   <p className="text-lg sm:text-xl text-gray-600 font-serif font-medium">Play. Connect. Remember.</p>
 </div>
 
@@ -132,7 +132,7 @@ const LandingPage = () => {
   <img
     src={`${imagePath}/wedding.jpeg`}
     alt="Wedding"
-    className="w-full h-full object-container"
+    className="w-full h-full object-fill"
   />
 </motion.div>
 

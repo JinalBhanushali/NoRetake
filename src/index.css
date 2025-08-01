@@ -10,6 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
@@ -18,5 +19,13 @@ code {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Merienda', cursive;
+  font-family: 'tan mon cheri', cursive;
+}
+
+.custom-bg {
+  background: linear-gradient(135deg, #dfeef7, #e5d6f7, #c7f0f9);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  margin: 0;
 }

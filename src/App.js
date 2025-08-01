@@ -25,7 +25,7 @@ function App() {
     document.addEventListener("click", tryPlay);
   }, []);
   return (
-      <>
+      <div className="">
        <audio
         ref={audioRef}
         src={`${process.env.REACT_APP_API_URL}/sounds/bg.mp3`}
@@ -44,7 +44,7 @@ function App() {
         <Route path="/contact" element={<FormE />} />
         <Route path="/UserForm" element={<UserForm />} />
       </Routes>
-    </>
+    </div>
   );
 }
 
