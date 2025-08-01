@@ -211,9 +211,9 @@ const FormD = () => {
         <div className="bg-white p-8 rounded-2xl shadow-2xl w-full">
           {!formSubmitted ? (
             <div>
-              <h2 className="text-xl font-semibold text-purple-700 text-center mb-4">
+              <div className="text-2xl font-bold text-purple-700 text-center mb-6">
                 {questions[current].question}
-              </h2>
+              </div>
               <div className="flex flex-col gap-3 mb-6">
                 {questions[current].options.map((opt, idx) => (
                   <button
@@ -258,7 +258,7 @@ const FormD = () => {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className="bg-white p-10 rounded-xl shadow-lg w-full max-w-md relative"
+                className="bg-white font-serif p-10 rounded-xl shadow-lg w-full max-w-md relative"
               >
                 <button
                   onClick={() => navigate('/options')}

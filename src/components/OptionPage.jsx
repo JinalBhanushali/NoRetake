@@ -79,7 +79,7 @@ useEffect(() => {
           className="w-14 h-14 mb-3"
         />
         <h2
-          className={`text-lg font-bold mb-2 ${isCenter ? "text-white" : option.color
+          className={`text-lg font-serif font-bold mb-2 ${isCenter ? "text-white" : option.color
             }`}
         >
           {option.title}
@@ -95,7 +95,7 @@ useEffect(() => {
        <motion.button
               whileHover={{ scale: 1.05, rotate: 2 }}
               onClick={() => navigate("/")}
-              className="absolute top-6 right-6 bg-white text-purple-600 border-2 border-purple-300 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-100 hover:border-purple-500 transition"
+              className="absolute top-6 right-6 bg-white text-purple-600 border-2 border-purple-300 px-5 py-2 rounded-full font-serif font-semibold shadow-md hover:bg-purple-100 hover:border-purple-500 transition"
             >
               🏠 Home
             </motion.button>

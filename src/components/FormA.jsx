@@ -177,7 +177,7 @@ const FormA = () => {
           {!result ? (
             <>
 
-              <h1 className="text-3xl font-bold text-gray-800 mb-4">{questions[currentQuestion].question}</h1>
+              <div className="text-3xl font-bold text-gray-800 mb-4">{questions[currentQuestion].question}</div>
               <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 mt-6">
                 {questions[currentQuestion].options.map((option, index) => (
                   <motion.button key={index} whileHover={{ scale: 1.08 }} className={`w-56 h-28 bg-white rounded-xl shadow-lg text-lg font-semibold text-gray-700 transition-all duration-200 flex items-center justify-center text-center p-3 mx-4 ${answers[currentQuestion] === option.value ? "border-4 border-purple-400" : "hover:shadow-none"}`} onClick={() => handleAnswer(option.value)}>
@@ -208,7 +208,7 @@ const FormA = () => {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className="bg-white p-10 rounded-xl shadow-lg w-full max-w-md relative"
+                className="bg-white p-12 font-serif rounded-xl shadow-lg w-full max-w-md relative"
               >
                 <button
                   onClick={() => navigate('/options')}
@@ -217,7 +217,7 @@ const FormA = () => {
                   ×
                 </button>
                 <div>
-                  <h2 className="text-3xl font-bold mb-4">🪪 Your Personality Type</h2>
+                  <h2 className="text-3xl font-bold mb-4">Your Personality Type</h2>
                   <p className="text-xl text-purple-700 font-semibold">{result}</p>
                   <p className="mt-4 text-gray-600">{personalities[result]}</p>
                 </div>

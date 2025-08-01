@@ -93,9 +93,9 @@ const FormB = () => {
       {/* Titles */}
       <div>
         <h2 className="text-2xl sm:text-3xl font-bold text-purple-700">Bust the Myths! 🎈</h2>
-        <h2 className="text-md sm:text-xl font-medium text-purple-800 mt-2">
+        <div className="text-md font-serif sm:text-xl font-medium text-purple-800 mt-2">
           Click a balloon to know the truth!
-        </h2>
+        </div>
       </div>
 
       {/* Balloon Grid */}
