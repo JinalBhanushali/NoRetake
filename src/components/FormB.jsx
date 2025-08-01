@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { useNavigate, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const colors = [
   "bg-pink-400",
@@ -13,20 +13,13 @@ const colors = [
 
 const getTailwindColor = (className) => {
   switch (className) {
-    case "bg-pink-400":
-      return "#f472b6";
-    case "bg-blue-400":
-      return "#60a5fa";
-    case "bg-yellow-300":
-      return "#fde68a";
-    case "bg-green-300":
-      return "#86efac";
-    case "bg-red-400":
-      return "#f87171";
-    case "bg-purple-400":
-      return "#c084fc";
-    default:
-      return "#999";
+    case "bg-pink-400": return "#f472b6";
+    case "bg-blue-400": return "#60a5fa";
+    case "bg-yellow-300": return "#fde68a";
+    case "bg-green-300": return "#86efac";
+    case "bg-red-400": return "#f87171";
+    case "bg-purple-400": return "#c084fc";
+    default: return "#999";
   }
 };
 
@@ -60,21 +53,18 @@ const FormB = () => {
   useEffect(() => {
     const clickSound = new Audio(`${process.env.REACT_APP_API_URL}/sounds/click.mp3`);
     const handleClick = (e) => {
-      const tag = e.target.tagName.toLowerCase();
-      if (tag === "button" || e.target.closest("button")) {
+      if (e.target.tagName.toLowerCase() === "button" || e.target.closest("button")) {
         clickSound.currentTime = 0;
-        clickSound.play().catch(() => { });
+        clickSound.play().catch(() => {});
       }
     };
     document.addEventListener("click", handleClick);
-    return () => {
-      document.removeEventListener("click", handleClick);
-    };
+    return () => document.removeEventListener("click", handleClick);
   }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-200 flex flex-col items-center justify-center text-center px-4 relative overflow-x-hidden">
-      {/* Navigation Buttons */}
+      {/* Nav Buttons */}
       <motion.button
         whileHover={{ scale: 1.05, rotate: 2 }}
         onClick={() => navigate("/")}
@@ -98,78 +88,107 @@ const FormB = () => {
         </div>
       </div>
 
-      {/* Balloon Grid */}
+      {/* Balloons */}
       <div className="mt-20 flex flex-col items-center gap-12 px-4">
         {[0, 1].map((row) => (
           <div key={row} className="flex flex-wrap justify-center gap-12">
             {myths.slice(row * 5, row * 5 + 5).map((myth, index) => {
               const actualIndex = row * 5 + index;
               const color = colors[actualIndex % colors.length];
-              const size = 120;
               const isPopped = poppedIndexes.includes(actualIndex);
+              const balloonColor = getTailwindColor(color);
+              const size = 120;
 
               return (
-                <motion.div
+                <div
                   key={actualIndex}
-                  initial={{ y: 0, opacity: 1 }}
-                  animate={isPopped ? { scale: 1 } : { y: [0, -30, 0] }}
-                  transition={{
-                    repeat: isPopped ? 0 : Infinity,
-                    repeatType: "loop",
-                    duration: 6,
-                    delay: actualIndex * 0.5,
-                    ease: "easeInOut",
-                  }}
-                  className="flex flex-col items-center cursor-pointer"
+                  className="flex flex-col items-center cursor-pointer relative"
                   style={{ width: `${size}px` }}
                   onClick={() => handleBalloonClick(actualIndex)}
                 >
-                  {!isPopped ? (
-                    <div
-                      className={`w-full ${color} relative flex items-center justify-center px-2 text-center`}
-                      style={{
-                        height: `${size * 1.3}px`,
-                        borderRadius: "50% 50% 45% 45%",
-                        boxShadow: "0 6px 12px rgba(0,0,0,0.15)",
-                      }}
-                    >
-                      <div className="absolute top-3 left-3 w-3 h-5 bg-white opacity-40 rounded-full rotate-12"></div>
-                      <div
-                        className="absolute -bottom-1.5 left-1/2 transform -translate-x-1/2 w-0 h-0"
+                  <AnimatePresence>
+                    {!isPopped ? (
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0, opacity: 0, rotate: 90 }}
+                        transition={{ duration: 0.3 }}
+                        className={`w-full ${color} relative flex items-center justify-center px-2 text-center`}
                         style={{
-                          borderLeft: "5px solid transparent",
-                          borderRight: "5px solid transparent",
-                          borderTop: `10px solid ${getTailwindColor(color)}`,
+                          height: `${size * 1.3}px`,
+                          borderRadius: "50% 50% 45% 45%",
+                          boxShadow: "0 6px 12px rgba(0,0,0,0.15)",
                         }}
-                      ></div>
-                      <span className="text-white text-sm sm:text-base font-semibold leading-tight text-center px-2 z-10">
-                        {myth.myth}
-                      </span>
-                    </div>
-                  ) : (
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.3 }}
-                      className="bg-white text-sm text-purple-700 p-3 rounded-xl shadow-md text-center max-w-[150px]"
-                    >
-                      ✅ {myth.truth}
-                    </motion.div>
-                  )}
-                  {/* Curved Stick */}
+                      >
+                        <div className="absolute top-3 left-3 w-3 h-5 bg-white opacity-40 rounded-full rotate-12"></div>
+                        <div
+                          className="absolute -bottom-1.5 left-1/2 transform -translate-x-1/2 w-0 h-0"
+                          style={{
+                            borderLeft: "5px solid transparent",
+                            borderRight: "5px solid transparent",
+                            borderTop: `10px solid ${balloonColor}`,
+                          }}
+                        ></div>
+                        <span className="text-white text-sm sm:text-base font-semibold leading-tight text-center px-2 z-10">
+                          {myth.myth}
+                        </span>
+                      </motion.div>
+                    ) : (
+                      <>
+                        {/* Burst Flash */}
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: [0.6, 0] }}
+                          transition={{ duration: 0.3 }}
+                          className="absolute w-[80px] h-[80px] bg-white rounded-full z-0 blur-2xl"
+                        />
+
+                        {/* Burst Shards */}
+                        {[...Array(10)].map((_, i) => {
+                          const angle = (i * 360) / 10 + Math.random() * 15;
+                          const distance = 50 + Math.random() * 20;
+                          const x = distance * Math.cos((angle * Math.PI) / 180);
+                          const y = distance * Math.sin((angle * Math.PI) / 180);
+                          const rotate = Math.random() * 360;
+                          const shardColor = ["bg-yellow-300", "bg-yellow-400", "bg-yellow-500"][i % 3];
+
+                          return (
+                            <motion.div
+                              key={i}
+                              initial={{ scale: 1, opacity: 1, x: 0, y: 0, rotate: 0 }}
+                              animate={{ scale: 0.3, opacity: 0, x, y, rotate }}
+                              transition={{ duration: 0.7, ease: "easeOut" }}
+                              className={`absolute w-2.5 h-1 ${shardColor} rounded-sm shadow-md blur-[1px] z-10`}
+                            />
+                          );
+                        })}
+
+                        {/* Truth Box */}
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 0.5, duration: 0.3 }}
+                          className="bg-white text-sm text-purple-700 p-3 rounded-xl shadow-md text-center max-w-[150px] z-20"
+                        >
+                          ✅ {myth.truth}
+                        </motion.div>
+                      </>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Balloon Stick */}
                   <svg width="12" height="80" viewBox="0 0 12 80" className="mt-1" xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M6 0 
-                        C 12 10, 0 20, 6 30 
-                        C 12 40, 0 50, 6 60 
-                        C 12 70, 0 80, 6 90"
+                      C 12 10, 0 20, 6 30 
+                      C 12 40, 0 50, 6 60 
+                      C 12 70, 0 80, 6 90"
                       stroke="#6B7280"
                       strokeWidth="1.5"
                       fill="none"
                     />
                   </svg>
-
-                </motion.div>
+                </div>
               );
             })}
           </div>
