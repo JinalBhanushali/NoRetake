@@ -113,7 +113,7 @@ const [isPdfOpen, setIsPdfOpen] = useState(false);
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="bg-white rounded-xl p-6 w-[100vw] max-w-5xl h-[90vh] relative shadow-lg"
+            className="bg-white rounded-xl p-6 w-[250vw] max-w-7xl h-[90vh] relative shadow-lg"
           >
             {/* Close Button */}
             <button
@@ -139,7 +139,7 @@ const [isPdfOpen, setIsPdfOpen] = useState(false);
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="bg-white rounded-xl p-6 w-[100vw] max-w-5xl h-[90vh] relative shadow-lg"
+            className="bg-white rounded-xl p-6 w-[250vw] max-w-7xl h-[90vh] relative shadow-lg"
           >
             {/* Close Button */}
             <button

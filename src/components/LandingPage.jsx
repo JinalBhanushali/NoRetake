@@ -120,37 +120,43 @@ const LandingPage = () => {
 </div>
 
         {/* 🖼️ Grid Boxes */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-x-16 sm:gap-y-14 mb-16">
-          {/* Box 1 */}
-          {/* Box 1 */}
-<motion.div
-  initial={{ opacity: 0, y: 40 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.3, duration: 0.8 }}
-  className="relative w-[500px] h-[280px] rounded-3xl overflow-hidden shadow-2xl"
->
-  <img
-    src={`${imagePath}/wedding.jpeg`}
-    alt="Wedding"
-    className="w-full h-full object-fill"
-  />
-</motion.div>
+<div className="grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-x-16 sm:gap-y-14 mb-16 -ml-10">
 
-{/* Box 2 */}
-<motion.div
-  initial={{ opacity: 0, y: 40 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.3, duration: 0.8 }}
-  className="relative w-[500px] h-[280px] rounded-3xl overflow-hidden shadow-2xl"
->
-  <img
-    src={`${imagePath}/noretakes.jpeg`}
-    alt="NoRetakes"
-    className="w-full h-full object-container"
-  />
-</motion.div>
+  {/* Logo 1 */}
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.3, duration: 0.8 }}
+    //className="relative w-full max-w-[600px] aspect-[16/9] rounded-3xl overflow-hidden mx-auto"
+    className="relative w-[500px] h-[280px]  rounded-3xl overflow-hidden shadow-2xl"
+  >
+    <img
+      src={`${imagePath}/wedding.jpeg`}
+      alt="Wedding"
+      //className="w-full h-full object-contain"
+      className="w-full h-full object-fill"
+    />
+  </motion.div>
 
-        </div>
+  {/* Logo 2 */}
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.3, duration: 0.8 }}
+   // className="relative w-full max-w-[600px] aspect-[16/9] rounded-3xl overflow-hidden mx-auto"
+     className="relative w-[500px] h-[280px]  rounded-3xl overflow-hidden shadow-2xl"
+  >
+    <img
+      src={`${imagePath}/noretakes.jpeg`}
+      alt="NoRetakes"
+      //className="w-full h-full object-contain"
+      className="w-full h-full object-fill"
+    />
+  </motion.div>
+
+</div>
+
+
 
         {/* 🚀 Start Button */}
         <motion.div
